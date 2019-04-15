@@ -118,9 +118,13 @@ class ExportQueryTest extends BaseQueryTest
     {
         $this->assertNull($sut->getType());
 
-        $allowed = ['html', 'csv', 'pdf', 'xlsx', 'ods'];
+        $exportTypes = ['html', 'csv', 'pdf', 'xlsx', 'ods'];
 
-        foreach ($allowed as $type) {
+        foreach ($exportTypes as $type) {
+            $sut->addType($type);
+        }
+
+        foreach ($exportTypes as $type) {
             $sut->setType($type);
             $this->assertEquals($type, $sut->getType());
         }
